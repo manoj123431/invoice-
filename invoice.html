@@ -1,0 +1,485 @@
+<div class="col-sm-9 col-md-9">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+
+<form class="form-horizontal">
+<fieldset>
+<!-- Form Name -->
+<legend align="center">Purchase invoice</legend>
+<div>
+<table align:"left" width="300">
+<tr>
+<td >
+  <!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="invoiceNo"> invoice no</label>
+  <div class="col-md-8">
+  <input id="invoiceNO" name="invoiceNo" placeholder="invoice no" class="form-control input-md" type="text">
+
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="date">date</label>
+  <div class="col-md-8">
+  <input id="date" name="date" placeholder="date" class="form-control input-md" type="date">
+
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div >
+  <table >
+  <tr>
+  <td>
+ 
+
+    <div >
+
+    <div >
+        <div >
+            <div >
+
+
+
+                </div>
+                <div ">
+               
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    <!-- Modal -->
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </td> 
+    <td>
+
+
+    <div class="col-sm-9 col-md-9">
+
+<div>
+      <div>
+      
+  </div>
+  </div>
+</div>
+<!-- Select Basic -->
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="vendorname">Vendor name</label>
+  <div class="col-md-8">
+  <input id="vendorname" name="vendorname" placeholder="vendorname" class="form-control input-md" type="text">
+
+  </div>
+</div>
+
+<!--Teaxtarea -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="description">description</label>
+<div class="col-md-8">
+<textarea class="form-control" id="description" name="description"></textarea>
+</div>
+</div>
+
+</td>
+</table>
+
+
+<div class="container">
+  <div class="row">
+   <div class="col-sm-9 col-md-9">
+ 
+<body>
+
+
+
+
+<div class="container">
+  <div class="row">
+
+     
+
+
+         
+
+
+<script type="text/javascript">
+
+function calc(idx) {
+  var price = parseFloat(document.getElementById("cost["+idx+"]").value)*
+              parseFloat(document.getElementById("qty["+idx+"]").value);
+  //  alert(idx+":"+price);  
+  document.getElementById("price["+idx+"]").value= isNaN(price)?"0.00":price.toFixed(2);
+  
+   var subtotal=price+(parseFloat(document.getElementById("tax["+idx+"]").value)*0.01*price)-
+                (parseFloat(document.getElementById("discount["+idx+"]").value)*0.01*price);
+  document.getElementById("subtotal["+idx+"]").value=isNaN(subtotal)?"0.00":subtotal.toFixed(2);
+
+
+
+  var taxvalue=(parseFloat(document.getElementById("tax["+idx+"]").value)*0.01*price);
+  document.getElementById("taxvalue["+idx+"]").value=isNaN(taxvalue)?"0.00":taxvalue.toFixed(2);
+   var discountvalue=(parseFloat(document.getElementById("discount["+idx+"]").value)*0.01*price);
+  document.getElementById("discountvalue["+idx+"]").value=isNaN(discountvalue)?"0.00":discountvalue.toFixed(2);
+    
+
+
+  
+   
+    totalTest(idx);
+
+
+      totalTest1(idx);
+       totalTest2(idx);
+        totalTest3(idx);
+
+
+}
+
+
+function totalTest(idx){
+    var grandTotal=0.0;
+    for(var i=1;i<=idx;i++){
+        grandTotal=grandTotal+parseFloat(document.getElementById("subtotal["+i+"]").value);
+       console.log(document.getElementById("subtotal["+i+"]").value);
+    }
+    document.getElementById("total").value=isNaN(grandTotal)?"0.00":grandTotal.toFixed(2);
+
+}
+
+
+function totalTest1(idx){
+    var pTotal=0.0;
+    for(var i=1;i<=idx;i++){
+        pTotal=pTotal+parseFloat(document.getElementById("price["+i+"]").value);
+       console.log(document.getElementById("price["+i+"]").value);
+    }
+    document.getElementById("pricetotal").value=isNaN(pTotal)?"0.00":pTotal.toFixed(2);
+    
+}
+
+function totalTest2(idx){
+	 var tTotal=0.0;
+    for(var i=1;i<=idx;i++){
+        tTotal=tTotal+parseFloat(document.getElementById("taxvalue["+i+"]").value);
+       console.log(document.getElementById("taxvalue["+i+"]").value);
+    }
+    document.getElementById("taxtotal").value=isNaN(tTotal)?"0.00":tTotal.toFixed(2);
+    
+}
+function totalTest3(idx){
+
+	 var dTotal=0.0;
+    for(var i=1;i<=idx;i++){
+        dTotal=dTotal+parseFloat(document.getElementById("discountvalue["+i+"]").value);
+       console.log(document.getElementById("discountvalue["+i+"]").value);
+    }
+    document.getElementById("discounttotal").value=isNaN(dTotal)?"0.00":dTotal.toFixed(2);
+
+	 
+}
+
+
+
+/*
+function totalIt() {
+  var qtys = document.getElementsById("qty[]");
+  var total=0;
+  for (var i=1;i<=qtys.length;i++) {
+    calc(i);  
+    var price = parseFloat(document.getElementById("price["+i+"]").value);
+    total += isNaN(price)?0:price;
+  }
+  document.getElementById("total").value=isNaN(total)?"0.00":total.toFixed(2);                        
+}      */
+
+/*window.onload=function() {
+  document.getElementsById("qty[]")[0].onkeyup=function() {calc(1)};
+  document.getElementsById("cost[]")[0].onkeyup=function() {calc(1)};
+  document.getElementsById("tax[]")[0].onkeyup=function() {calc(1)};
+  document.getElementsById("discount[]")[0].onkeyup=function() {calc(1)};
+
+}*/
+
+var rowCount =0;
+    function addRow(tableID) {
+
+        var table = document.getElementById(tableID);
+
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cell1 = row.insertCell(0);
+        var element1 = document.createElement("input");
+        element1.type = "checkbox";
+        element1.name = "chk["+rowCount+"]";
+        cell1.appendChild(element1);
+
+        var cell2 = row.insertCell(1);
+        cell2.innerHTML = rowCount;
+
+        var cell3 = row.insertCell(2);
+        var element3 = document.createElement("input");
+        element3.type = "text";
+        element3.id = "productcode["+rowCount+"]";
+        element3.name="productcode";
+        element3.required = "required";
+        element3.setAttribute("size","6px");
+        cell3.appendChild(element3);
+
+         var cell4 = row.insertCell(3);
+        var element4 = document.createElement("input");
+        element4.type = "text";
+        element4.id = "productname["+rowCount+"]";
+        element4.name="productname";
+        element4.required = "required";
+        element4.setAttribute("size","6px");
+        cell4.appendChild(element4);
+
+ var cell5 = row.insertCell(4);
+        var element5 = document.createElement("input");
+        element5.type = "text";
+        element5.id = "qty["+rowCount+"]";
+        element5.name = "qty";
+        element5.setAttribute("onkeyup", "calc("+rowCount+")");
+        element5.setAttribute("size","6px");
+        cell5.appendChild(element5);
+
+        var cell6 = row.insertCell(5);
+        var element6 = document.createElement("input");
+        element6.type = "text";
+        element6.id = "cost["+rowCount+"]";
+        element6.name = "cost";
+        element6.setAttribute("onkeyup", "calc("+rowCount+")");
+        element6.setAttribute("size","6px");
+        cell6.appendChild(element6);
+
+        var cell7 = row.insertCell(6);
+        var element7= document.createElement("input");
+        element7.type = "text";
+        element7.id = "price["+rowCount+"]";
+        element7.name = "price";
+        element7.setAttribute("readonly", true);
+        element7.setAttribute("size","6px");
+        cell7.appendChild(element7);
+
+
+
+        var cell8 = row.insertCell(7);
+        var element8 = document.createElement("input");
+        element8.type = "text";
+        element8.id = "tax["+rowCount+"]";
+        element8.name = "tax";
+        element8.setAttribute("onkeyup", "calc("+rowCount+")");
+        element8.setAttribute("size","6px");
+        cell8.appendChild(element8);
+
+        var cell9 = row.insertCell(8);
+        var element9 = document.createElement("input");
+        element9.type = "text";
+        element9.id = "taxvalue["+rowCount+"]";
+        element9.name = "taxvalue";
+        element9.setAttribute("onkeyup", "calc("+rowCount+")");
+         element9.setAttribute("size","6px");
+        cell9.appendChild(element9);
+        cell9.size="7px";
+
+        var cell10 = row.insertCell(9);
+        var element10 = document.createElement("input");
+        element10.type = "text";
+        element10.id = "discount["+rowCount+"]";
+        element10.name = "discount";
+        element10.setAttribute("onkeyup", "calc("+rowCount+")");
+        element10.setAttribute("size","6px");
+        cell10.appendChild(element10);
+
+             var cell11 = row.insertCell(10);
+        var element11 = document.createElement("input");
+        element11.type = "text";
+        element11.id = "discountvalue["+rowCount+"]";
+        element11.name = "discountvalue";
+        element11.setAttribute("onkeyup", "calc("+rowCount+")");
+         element11.setAttribute("size","6px");
+        cell11.appendChild(element11);
+        cell11.size="7px";
+
+        var cell12 = row.insertCell(11);
+        var element12= document.createElement("input");
+        element12.type = "text";
+        element12.id = "subtotal["+rowCount+"]";
+        element12.name = "subtotal";
+        element12.setAttribute("readonly", true);
+        element12.setAttribute("size","6px");
+        cell12.appendChild(element12);
+
+
+    }
+
+    function deleteRow(tableID) {
+        try {
+        var table = document.getElementById(tableID);
+        var rowCount = table.rows.length;
+        
+           
+        for(var i=0; i<rowCount; i++) {
+            
+            var row = table.rows[i];
+            var chkbox = row.cells[0].childNodes[0];
+            if(null != chkbox && true == chkbox.checked) {
+           var ttl=document.getElementById("total").value;  
+           var stl=document.getElementById("subtotal["+i+"]").value;
+            var rtl=parseFloat(ttl-stl);
+                table.deleteRow(i);
+                rowCount--;
+                i--;
+           document.getElementById("total").value=isNaN(rtl)?"0.00" : rtl.toFixed(2);
+            }
+          
+           
+                    
+        }
+        
+        }catch(e) {
+            alert(e.stack);
+        }
+    }
+ 
+function add()
+{ location.href="C:\Users\Dr Ayesha\Desktop\happy.html"}
+    </script>
+
+ <a href="#" class="btn btn-primary btn-xs " onclick="addRow('dataTable')"><h7><b>+</b> Add</h7>  </a>
+  <a href="#" class="btn btn-danger btn-xs" onclick="deleteRow('dataTable')"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+
+            
+        <form action="" method="post" enctype="multipart/form-data">
+
+<div class="table-responsive">
+            <TABLE id="dataTable" width="300" border="1" style="border-collapse:collapse;">
+        <TR style="background-color:#3c8dbc " >
+        <TH>Select</TH>
+        <TH>Sr. No.</TH>
+        <TH>product code</TH>
+        <TH >Product name</TH>
+        <TH>Qty</TH>
+        <TH>Cost</TH>
+        <TH >Price</TH>
+        <TH>tax %</TH>
+        <TH>tax value</TH>
+        <TH>discount %</TH>
+        <TH>discount value</TH>
+        <TH >subtotal</TH>
+        </TR>
+                <TR>
+                    <TD><INPUT type="checkbox" id="chk[1]" name="chk[1]"/></TD>
+                    <TD> 1 </TD>
+                    <TD> <INPUT type="text" id="productcode[1]" name="productcode" size="6px" /> </TD>
+                    <TD> <INPUT type="text" id="productname[1]" name="productname" size="6px"/> </TD>
+                    <TD> <INPUT type="text" name="qty" id="qty[1]" onKeyUp="calc(1)" size="6px" /> </TD>
+                    <TD> <INPUT type="text" name="cost" id="cost[1]" onKeyUp="calc(1)" size="6px"/> </TD>
+                    <TD> <INPUT type="text" name="price" id="price[1]" readonly size="6px"/> </TD>
+                    <TD> <INPUT type="text" name="tax" id="tax[1]" onKeyUp="calc(1)" size="6px"/> </TD>
+                    <TD> <INPUT type="text" name="taxvalue" id="taxvalue[1]" onKeyUp="calc(1)" size="6px"/> </TD>
+                    <TD> <INPUT type="text"  name="discount" id="discount[1]" onKeyUp="calc(1)" size="6px"/> </TD>
+                    <TD> <INPUT type="text"  name="discountvalue" id="discountvalue[1]" onKeyUp="calc(1)" size="6px"/> </TD>
+                    <TD> <INPUT type="text" name="subtotal" id="subtotal[1]"  readonly size="6px"/> </TD>
+                </TR>
+</TABLE>
+<br>
+<div class="col-xs-12 col-sm-6 col-md-10">
+                <table align="left" >
+
+
+   <tr><td>discount total:</td><td><input type="text" name="discounttotal" readonly="readonly" id="discounttotal" size="7px" /></td></tr><br>
+
+           <tr><td> tax total:</td><td><input type="text" name="taxtotal" readonly="readonly" id="taxtotal" size="7px" /></td></tr>
+</table>
+</div>
+
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-10">
+                <table align="right" >
+ <tr align="right">
+
+
+<td>
+         
+           <td>
+            <tr><td>net total:</td><td> <input type="text" name="pricetotal" readonly="readonly" id="pricetotal" size="7px" /></td></tr>
+           <tr><td>grand total: </td><td><input type="text" name="total" readonly="readonly" id="total" size="7px"/><br/></td>
+
+    
+</td>
+</tr>
+</table>
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+  </div>
+</div>
+
+
+
+    
+   <!-- Modal -->
+           </div>
+         </div>
+       </div>
+      </div>
+      </div>
+
+</div>
+
+
+ </table>
+
+
+
+<!-- Button -->
+
+<div class="form-group" align="bottom">
+  <label class="col-md-4 control-label" for="vadd"></label>
+  <div class="col-md-4">
+    <button ><a href="C:\Users\Dr Ayesha\Desktop\happy.html" >add</a></button>
+
+
+
+  </div>
+</div>
+
+</fieldset>
+</form>
+</form
+
+
+            <br>
+
+             </div>
+              <!-- /.box-body -->
+            </div>
+          </div>
+      </div>
+
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
